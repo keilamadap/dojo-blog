@@ -6,26 +6,28 @@ const useFetch = (url) => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    setTimeout(() => {
-      fetch(url)
-        .then((res) => {
-          //   console.log(res);
-          if (!res.ok) {
-            throw Error("Não foi possível acessar os dados.");
-          }
-          return res.json();
-        })
-        .then((data) => {
-          setData(data);
-          setError(null);
-          setIsPending(false);
-        })
-        .catch((e) => {
-          console.log(e.message);
-          setError(e.message);
-          setIsPending(false);
-        });
-    }, 1000);
+    const abortCont = new AbortController();
+
+    fetch(url, { signal: abortCont.signal })
+      .then((res) => {
+        //   console.log(res);
+        if (!res.ok) {
+          throw Error("Não foi possível acessar os dados.");
+        }
+        return res.json();
+      })
+      .then((data) => {
+        setData(data);
+        setError(null);
+        setIsPending(false);
+      })
+      .catch((e) => {
+        // console.log(e.message);
+        setError(e.message);
+        setIsPending(false);
+      });
+
+    return () => abortCont.abort();
   }, [url]);
 
   return { data, isPending, error };
