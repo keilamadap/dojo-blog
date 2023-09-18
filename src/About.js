@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 const About = () => {
   return (
     <div className="about-me">
@@ -16,8 +15,8 @@ const About = () => {
         <a
           href="https://www.youtube.com/@NetNinja"
           style={{ textDecoration: "none", color: "#f1356d" }}
-          target="_blank" // This opens the link in a new tab
-          rel="noopener noreferrer" // Recommended for security
+          target="_blank"
+          rel="noreferrer"
         >
           Net Ninja YouTube Channel!
         </a>
