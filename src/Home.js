@@ -1,38 +1,12 @@
-import { useEffect, useState } from "react";
 import Bloglist from "./Bloglist";
+import useFetch from "./useFetch";
 
 const Home = () => {
-  const [blogs, setBlogs] = useState(null);
-  const [isPending, setIsPending] = useState(true);
-  const [error, setError] = useState(null);
-
-  //   const handleDeleteBlog = (id) => {
-  //     const newBlogs = blogs.filter((blog) => blog.id !== id);
-  //     setBlogs(newBlogs);
-  //   };
-
-  useEffect(() => {
-    setTimeout(() => {
-      fetch("http://localhost:8000/blogs")
-        .then((res) => {
-          //   console.log(res);
-          if (!res.ok) {
-            throw Error("Não foi possível acessar os dados.");
-          }
-          return res.json();
-        })
-        .then((data) => {
-          setBlogs(data);
-          setError(null);
-          setIsPending(false);
-        })
-        .catch((e) => {
-          console.log(e.message);
-          setError(e.message);
-          setIsPending(false);
-        });
-    }, 1000);
-  }, []);
+  const {
+    data: blogs,
+    isPending,
+    error,
+  } = useFetch("http://localhost:8000/blogs");
 
   return (
     <div className="home">
