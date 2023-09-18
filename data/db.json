@@ -1,0 +1,22 @@
+{
+  "blogs": [
+    {
+      "title": "my first blog",
+      "body": "Lorem ipsum",
+      "author": "Keila Amada",
+      "id": 1
+    },
+    {
+      "title": "my second blog",
+      "body": "pam pam pam pam paaaam",
+      "author": "Amorinha Azeda",
+      "id": 2
+    },
+    {
+      "title": "my third blog",
+      "body": "lalalala",
+      "author": "Diego Chichi",
+      "id": 3
+    }
+  ]
+}
