@@ -1,3 +1,4 @@
+import About from "./About";
 import BlogDetails from "./BlogDetails";
 import Create from "./Create";
 import Home from "./Home";
@@ -19,6 +20,9 @@ function App() {
             </Route>
             <Route path="/blogs/:id">
               <BlogDetails />
+            </Route>
+            <Route path="/about">
+              <About />
             </Route>
           </Switch>
         </div>
